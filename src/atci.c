@@ -268,6 +268,11 @@ static void process_command(void)
     if (state.rx_buffer[1] != 'T' && state.rx_buffer[1] != 't') return;
 
     if (state.rx_length == 2) {
+        // HERE
+        if(lpuart_is_tx_paused() != 0) {
+            lpuart_resume_tx();
+        }
+
         lpuart_write_blocking(ATCI_OK, ATCI_OK_LEN);
         return;
     }

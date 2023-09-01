@@ -189,4 +189,16 @@ void lrw_factory_reset(bool reset_devnonce, bool reset_deveui);
  */
 LoRaMacStatus_t lrw_get_device_time(bool piggyback);
 
+
+/** @brief Pause the UART TX communication  
+*/
+void lrw_pause_tx(void);
+
+
+/** @brief Check if UART TX is paused
+ *  @return if TX is paused
+*/
+bool lrw_is_tx_paused(void);
+
+
 #endif // _LRW_H

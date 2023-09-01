@@ -1988,6 +1988,13 @@ static void set_rfpower(atci_param_t *param)
     OK_();
 }
 
+static void pause_tx(atci_param_t *param)
+{
+    lrw_pause_tx();
+    OK_();
+}
+
+
 #if DEBUG_LOG != 0
 static void get_loglevel(void)
 {
@@ -2357,6 +2364,7 @@ static const atci_command_t cmds[] = {
     {"$RX2",         NULL,            set_rx2,          get_rx2,          NULL, "Configure RX2 window frequency and data rate"},
     {"$DR",          NULL,            set_dr,           get_dr,           NULL, "Configure data rate (DR)"},
     {"$RFPOWER",     NULL,            set_rfpower,      get_rfpower,      NULL, "Configure RF power"},
+    {"$PAUSE",       pause_tx,        NULL,             NULL,             NULL, "Pause UART TX"},
 #if DEBUG_LOG != 0
     {"$LOGLEVEL",    NULL,            set_loglevel,     get_loglevel,     NULL, "Configure logging on USART port"},
 #endif

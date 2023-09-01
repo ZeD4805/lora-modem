@@ -550,6 +550,25 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *port)
 }
 
 
+void lpuart_pause_tx(void)
+{
+    pause_tx_dma();
+}
+
+
+void lpuart_resume_tx(void)
+{
+    resume_tx_dma();
+}
+
+
+bool lpuart_is_tx_paused(void)
+{
+    return (HAL_IS_BIT_SET(port.Instance->CR3, USART_CR3_DMAT) &&
+        (port.gState == HAL_UART_STATE_BUSY_TX));
+}
+
+
 #if DETACHABLE_LPUART == 1
 
 void lpuart_detach(void)

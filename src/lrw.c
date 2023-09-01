@@ -1401,3 +1401,21 @@ LoRaMacStatus_t lrw_get_device_time(bool piggyback)
 
     return rc;
 }
+
+
+void lrw_pause_tx(void)
+{
+    lpuart_pause_tx();
+}
+
+
+void lrw_resume_tx(void)
+{
+    lpuart_resume_tx();
+}
+
+
+bool lrw_is_tx_paused(void)
+{
+    return lpuart_is_tx_paused();
+}
